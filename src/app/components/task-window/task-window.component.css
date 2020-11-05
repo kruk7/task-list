@@ -1,0 +1,13 @@
+div {
+  padding: 5px;
+}
+
+.add-panel {
+  display: flex;
+  justify-content: center;
+}
+
+.list-panel {
+  display: flex;
+  justify-content: space-around;
+}
