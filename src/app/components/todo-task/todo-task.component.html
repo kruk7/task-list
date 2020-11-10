@@ -1,0 +1,11 @@
+<h3>Lista zadań: {{taskList.length}}</h3>
+<ng-container *ngIf=" taskList.length > 0; else blankList">
+  <ul>
+    <li *ngFor="let task of taskList">
+      {{task}}
+      <button (click)="doneTask(task)">Wykonano</button>
+      <button (click)="deleteTask(task)">Usuń</button>
+    </li>
+  </ul>
+</ng-container>
+<ng-template #blankList>Nie ma żadnych zadań</ng-template>

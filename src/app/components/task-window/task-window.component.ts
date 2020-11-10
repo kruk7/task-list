@@ -1,31 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import {TaskServiceService} from '../../services/task-service.service';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-task-window',
   templateUrl: './task-window.component.html',
   styleUrls: ['./task-window.component.css']
 })
-export class TaskWindowComponent implements OnInit {
-  task = '';
-  taskList: Array<string> = [];
-  doneList: Array<string> = [];
+export class TaskWindowComponent {
+  taskList: Array<string>;
+  doneList: Array<string>;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private taskService: TaskServiceService) {
+    taskService.getTaskListObs().subscribe((tasks: Array<string>) => {
+      this.taskList = tasks;
+    });
+    taskService.getDoneListObs().subscribe((tasks: Array<string>) => {
+      this.doneList = tasks;
+    });
   }
 
-  addTask(): void {
-    this.taskList.push(this.task);
-    this.task = '';
+  addTask(task: string): void {
+    this.taskService.addTask(task);
   }
 
   doneTask(task: string): void {
-    this.doneList.push(task);
-    this.deleteTask(task);
+    this.taskService.doneTask(task);
   }
 
   deleteTask(task: string): void {
-    this.taskList = this.taskList.filter(event => event !== task);
+    this.taskService.deleteTask(task);
   }
 }
