@@ -16,7 +16,7 @@ export class AddTaskComponent {
   addTask(): void {
 
     if (this.task !== '') {
-      this.tastkService.addTask(this.task);
+      this.tastkService.addTask(({name: this.task, created: new Date()}));
       this.task = '';
     }
   }

@@ -1,11 +1,20 @@
 <h3>Lista zadań: {{taskList.length}}</h3>
 <ng-container *ngIf=" taskList.length > 0; else blankList">
-  <ul>
-    <li *ngFor="let task of taskList">
-      {{task}}
-      <button (click)="doneTask(task)">Wykonano</button>
-      <button (click)="deleteTask(task)">Usuń</button>
-    </li>
-  </ul>
+  <table>
+    <tr>
+      <td>Name</td>
+      <td>Utworzony</td>
+      <td>Opis</td>
+      <td>Termin</td>
+    </tr>
+    <tr *ngFor="let task of taskList">
+      <td><b>{{task.name}}</b></td>
+      <td>{{task.created | date:'HH:mm:ss dd-MM-yy'}}</td>
+      <td>{{task.description}}</td>
+      <td>{{task.expired | date:'HH:mm:ss dd-MM-yy'}}</td>
+      <td><button (click)="doneTask(task)">Wykonano</button></td>
+      <td><button (click)="deleteTask(task)">Usuń</button></td>
+    </tr>
+  </table>
 </ng-container>
 <ng-template #blankList>Nie ma żadnych zadań</ng-template>
