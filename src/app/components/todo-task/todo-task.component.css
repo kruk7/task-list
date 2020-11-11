@@ -1,7 +1,15 @@
-td {
-  border: darkgrey solid thin;
+li {
+  padding: 5px;
+  background: lightsteelblue;
+  border: thin darkgrey solid;
+}
+
+.odd-li {
+  background: darkgrey;
   padding: 5px;
 }
-button{
-  width: 120px;
+
+.last-li {
+  background: palevioletred;
+  padding: 5px;;
 }

@@ -9,6 +9,8 @@ import {Task} from '../../models/task';
 })
 export class DoneTaskComponent {
 
+
+
   doneList: Array<Task>;
 
   constructor(private taskService: TaskServiceService) {

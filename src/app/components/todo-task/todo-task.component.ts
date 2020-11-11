@@ -18,10 +18,21 @@ export class TodoTaskComponent {
   }
 
   doneTask(task: Task): void {
+    task.ended = new Date();
     this.serviceTask.doneTask(task);
   }
 
   deleteTask(task: Task): void {
     this.serviceTask.deleteTask(task);
+  }
+
+  getColor(): string {
+    if (this.taskList.length < 5) {
+      return 'green';
+    } else if (this.taskList.length === 5) {
+      return 'orange';
+    } else {
+      return 'red';
+    }
   }
 }
