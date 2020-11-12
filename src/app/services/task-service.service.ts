@@ -16,8 +16,8 @@ export class TaskServiceService {
 
   constructor() {
     this.taskList = [
-      ({name: 'task1', created: new Date(), description: 'description1'}),
       ({name: 'task2', created: new Date(), description: 'description2'}),
+      ({name: 'task1', created: new Date(), description: 'description1'}),
       ({name: 'task3', created: new Date(), description: 'description3'})
     ];
     this.taskListObs.next(this.taskList);

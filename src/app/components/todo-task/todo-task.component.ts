@@ -13,7 +13,7 @@ export class TodoTaskComponent {
 
   constructor(private serviceTask: TaskServiceService) {
     serviceTask.getTaskListObs().subscribe((tasks: Array<Task>) => {
-      this.taskList = tasks;
+      this.taskList = tasks.slice();
     });
   }
 

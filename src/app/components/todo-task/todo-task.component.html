@@ -1,11 +1,11 @@
 <p [ngStyle]="{color: getColor()}">Lista zadań: {{taskList.length}}</p>
 <ng-container *ngIf=" taskList.length > 0; else blankList">
   <ul>
-    <li appDate [date]="task.created" *ngFor="let task of taskList; let odd = odd"
+    <li appDate [date]="task.created" *ngFor="let task of taskList | sortTask; let odd = odd"
         [ngClass]="{'odd-li': odd, 'last-li': taskList.length === 1 }">
-      <b>{{task.name}} </b>
-      <button (click)="doneTask(task)">Wykonano</button>
-      <button (click)="deleteTask(task)">Usuń</button>
+      <b>{{task.name | transformTask: '!'}} </b>
+      <button type="button" class="btn btn-primary" (click)="doneTask(task)">Wykonano</button>
+      <button type="button" class="btn btn-secondary" (click)="deleteTask(task)">Usuń</button>
     </li>
   </ul>
 </ng-container>
